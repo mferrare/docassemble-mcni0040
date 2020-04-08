@@ -1,0 +1,69 @@
+# Demonstrating the benefits of iteration
+---
+# We're expressing our list of names as a 'variable name' declaration
+# now.
+variable name: AGMname
+use objects: True
+data:
+  - Ashleigh McNichol
+  - Courtney McNichol
+  - Karen Sutherland
+  - Ian McNichol
+---
+# Displaying with iteration is better
+mandatory: True
+question: Display with iteration
+subquestion: |
+  Family Members
+  
+  % for AGMitem in AGMname:
+  - ${ AGMitem }
+  % endfor
+ 
+buttons:
+  - Continue: continue
+---
+# A smarter example.  We use a table
+# Displaying with iteration is better
+mandatory: True
+question: Display with iteration
+subquestion: |
+  Start off with the table header and then we use 
+  iteration to supply the table body
+  
+  Item|Name
+  ---|---
+  % for AGMitem in AGMname:
+  ${ loop.index + 1 }|${ AGMitem }
+  % endfor
+  
+buttons:
+  - Continue: continue
+---
+# A smarter example.  We use a table
+# Displaying with iteration is better
+mandatory: True
+question: Display with iteration
+subquestion: |
+  List items that end in a constenant.
+  
+  We use an if statement inside the for loop to select only the
+  list items we want.
+  
+  Item|Name
+  ---|---
+  % for AGMitem in AGMname:
+  % if AGMitem[-1].lower() in set('bcdfghjklmnpqrstvwxyz'):
+  ${ loop.index + 1 }|${ AGMitem }
+  % else:
+  ${loop.index + 1}|**REDACTED**
+  % endif
+  % endfor
+  
+  AGMname has **${ AGMname.number_as_word() }** items.
+  
+buttons:
+  - Continue: continue
+  - Done: exit
+---
+  
