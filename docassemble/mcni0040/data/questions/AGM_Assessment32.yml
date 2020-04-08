@@ -23,6 +23,7 @@ data:
     Hobbies: Playing guitar 
     Likes Pets?: True
 ---
+mandatory: True
 code: |
 
   Loop 1: iterate over each row in the table (each item in the data block)
