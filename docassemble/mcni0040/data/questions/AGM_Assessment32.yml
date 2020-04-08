@@ -1,0 +1,75 @@
+---
+variable name: AGMperson_info
+use objects: True
+data:
+  - First Name: Ashleigh
+    Last Name: McNichol
+    Age: 23
+    Hobbies: Cooking and reading
+    Likes Pets?: True
+  - First Name: Courtney
+    Last Name: McNichol
+    Age: 20
+    Hobbies: Talking shit 
+    Likes Pets?: True
+  - First Name: Karen
+    Last Name: Sutherland
+    Age: 57
+    Hobbies: Reading and gardening
+    Likes Pets?: True
+  - First Name: Ian
+    Last Name: McNichol
+    Age: 53
+    Hobbies: Playing guitar 
+    Likes Pets?: True
+---
+variable name: AGMquestions
+use objects: true 
+data: 
+  - AGMquestion: Is this information below correct for Ashleigh? 
+    AGMchoices: 
+      - First Name: Ashleigh
+      - Last Name: McNichol
+      - Age: 23
+      - Hobbies: Reading and cooking
+      - Likes Pets?: True 
+  - AGMquestion: Is this information below correct for Courtney? 
+    AGMchoices: 
+      - First Name: Courtney
+      - Last Name: McNichol
+      - Age: 20
+      - Hobbies: Talking shit 
+      - Likes Pets?: True 
+  - AGMquestion: Is this information below correct for Karen? 
+    AGMchoices: 
+      - First Name: Karen
+      - Last Name: Sutherland
+      - Age: 57
+      - Hobbies: Reading and gardening
+      - Likes Pets?: True
+  - AGMquestion: Is this information below correct for Ian? 
+    AGMchoices: 
+      - First Name: Ian
+      - Last Name: McNichol
+      - Age: 53
+      - Hobbies: Playing guitar
+      - Likes Pets: True
+
+    
+--- 
+madnatory: True
+question: Data table as a table
+subquestion: | 
+  #### Our data was a table. Now we will make it a table again!
+  
+  ${AGMcolumn_header}
+  ${AGMdashes}
+---
+code: | 
+  AGMcolumn_header = ""
+  
+  
+   
+  
+  
+  

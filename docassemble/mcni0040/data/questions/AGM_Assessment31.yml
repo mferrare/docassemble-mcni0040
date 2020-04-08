@@ -1,0 +1,38 @@
+---
+objects:
+  - MJFperson_info: DADict
+---
+variable name: MJFperson_info
+use objects: True
+data:
+  First Name: Ashleigh
+  Last Name: McNichol
+  Age: 23
+  Hobbies: Cooking and reading
+  Likes Pets?: True
+---
+mandatory: True
+question: Personal Information
+subquestion: |
+  ### Personal Information
+  
+  Category|Value
+  ---|---
+  %for AGMkey in AGMperson_info:
+  ${ AGMkey } | ${AGMperson_info[AGMkey]}
+  %endfor
+buttons:
+  - Edit: Restart
+  - Done: exit
+    url: http://www.courts.sa.gov.au/OurCourts/SupremeCourt/Pages/default.aspx
+---
+
+code: |
+  AGMperson_info = {
+    'First Name': 'Ashleigh',
+    'Last Name': 'McNichol',
+    'Age': 23,
+    'Hobbies': 'Cooking and reading', 
+    'Likes Pets?': True
+  } 
+---
