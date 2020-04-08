@@ -23,52 +23,58 @@ data:
     Hobbies: Playing guitar 
     Likes Pets?: True
 ---
-variable name: AGMquestions
-use objects: true 
-data: 
-  - AGMquestion: Is this information below correct for Ashleigh? 
-    AGMchoices: 
-      - First Name: Ashleigh
-      - Last Name: McNichol
-      - Age: 23
-      - Hobbies: Reading and cooking
-      - Likes Pets?: True 
-  - AGMquestion: Is this information below correct for Courtney? 
-    AGMchoices: 
-      - First Name: Courtney
-      - Last Name: McNichol
-      - Age: 20
-      - Hobbies: Talking shit 
-      - Likes Pets?: True 
-  - AGMquestion: Is this information below correct for Karen? 
-    AGMchoices: 
-      - First Name: Karen
-      - Last Name: Sutherland
-      - Age: 57
-      - Hobbies: Reading and gardening
-      - Likes Pets?: True
-  - AGMquestion: Is this information below correct for Ian? 
-    AGMchoices: 
-      - First Name: Ian
-      - Last Name: McNichol
-      - Age: 53
-      - Hobbies: Playing guitar
-      - Likes Pets: True
+code: |
 
-    
---- 
-madnatory: True
+  Loop 1: iterate over each row in the table (each item in the data block)
+
+    Loop 2: iterate over each element in the list item (each key in the dictionary)
+        Inside this second loop
+        - get the key and value for that key
+        - we will add them to a list so that it look like this: 'First Name: Asheligh' <- 'key: value'
+          - this gets added to the AGMchoices key.
+
+  for AGMitem in AGMperson_info:
+
+    AGMitem['AGMchoices'] = []
+    for AGMkey in AGMitem:
+      value = AGMitem[AGMkey]
+      AGMitem['AGMchoices'].append('information goes here ie: key and the value')
+
+
+
+  MJFlist = [
+    'First Name: Ashleigh',
+    'Last Name: McNichol',
+    'Age: 23',
+    'Hobbies: Reading and cooking',
+    'Likes Pets?: True'
+  ]
+
+mandatory: True
 question: Data table as a table
 subquestion: | 
   #### Our data was a table. Now we will make it a table again!
   
-  ${AGMcolumn_header}
-  ${AGMdashes}
+  ${ AGMquestion_table }
 ---
-code: | 
-  AGMcolumn_header = ""
-  
-  
+table: AGMquestion_table
+rows:  AGMquestions
+columns:
+  - First Name: |
+      row_item['First Name']
+  - Last Name: |
+      row_item['Last Name']
+  - Selected answers: |
+      row_item['AGManswers'].true_values()
+---
+question: |
+  Is this information below correct for ${ AGMperson_info[i]['First Name'] }?
+fields:
+  - no label: AGMperson_info[i]['AGManswers']
+    datatype: checkboxes
+    choices:
+      - ${ 'First Name: {}'.format(AGMperson_info[i]['First Name'])}
+---
    
   
   
